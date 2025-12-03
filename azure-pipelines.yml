@@ -1,6 +1,5 @@
 # Docker
 # Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
 - master
@@ -19,11 +18,15 @@ stages:
     displayName: Build
     pool:
       vmImage: ubuntu-latest
+
     steps:
     - task: Docker@2
-      displayName: Build an image
+      displayName: Build Docker Image
       inputs:
         command: build
+        containerRegistry: 'Azure Container Registry'
+        repository: 'superset'
         dockerfile: '$(Build.SourcesDirectory)/.devcontainer/Dockerfile'
+        buildContext: '$(Build.SourcesDirectory)'
         tags: |
           $(tag)
