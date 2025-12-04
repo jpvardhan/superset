@@ -24,9 +24,9 @@ stages:
       displayName: Build Docker Image
       inputs:
         command: build
-        containerRegistry: 'Azure Container Registry'
+        containerRegistry: 'intellisuiteupwork.azurecr.io'
         repository: 'superset'
-        dockerfile: '$(Build.SourcesDirectory)/.devcontainer/Dockerfile'
+        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         buildContext: '$(Build.SourcesDirectory)'
         tags: |
           $(tag)
